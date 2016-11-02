@@ -1,0 +1,11 @@
+make
+ls
+g++ -v
+g++ -v
+exit
+g++ -v
+g++ -v
+g++ -v
+g++ -v
+make
+exit
