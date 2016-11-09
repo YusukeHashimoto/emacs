@@ -1,0 +1,8 @@
+(global-set-key "\C-h" 'backward-delete-char)
+(global-set-key (kbd "C-m") 'newline-and-indent)
+(global-set-key (kbd "C-c h") 'helm-mini)
+(define-key global-map (kbd "C-t") 'other-window)
+(define-key helm-map (kbd "C-h") 'delete-backward-char)
+(define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
+;(define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
+;(define-key helm-read-files-map (kbd "TAB") 'helm-execute-persistent-action)

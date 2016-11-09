@@ -1,13 +1,7 @@
-(global-set-key "\C-h" 'backward-delete-char)
-(column-number-mode t)
-
-(display-battery-mode t)
-(setq frame-title-format "%f")
-(global-linum-mode t)
-
-(global-set-key (kbd "C-m") 'newline-and-indent)
-
-(define-key global-map (kbd "C-t") 'other-window)
+(setq load-path (cons "~/.emacs.d/elisp" load-path))
+(add-to-list 'load-path "~/.emacs.d/elisp")
+(require 'init-loader)
+(init-loader-load "~/.emacs.d/inits/")
 
 (package-initialize)
 (setq package-archives
@@ -24,7 +18,7 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
-(setq load-path (cons "~/.emacs.d/elisp" load-path))
+
 
 (require 'install-elisp)
 (setq install-elisp-repository-directory "~/.emacs.d/elisp")
@@ -39,10 +33,39 @@
 (require 'helm-config)
 (helm-mode 1)
 
-(define-key helm-map (kbd "C-h") 'delete-backward-char)
-(define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
-;(define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
-;(define-key helm-read-files-map (kbd "TAB") 'helm-execute-persistent-action)
-
 (require 'git-gutter)
 (global-git-gutter-mode +1)
+
+(setq default-tab-width 4)
+
+(require 'flycheck)
+(global-flycheck-mode)
+
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
+
+(require 'whitespace)
+(setq whitespace-style '(face           ; faceで可視化
+                         trailing       ; 行末
+                         tabs           ; タブ
+;;                         empty          ; 先頭/末尾の空行
+                         space-mark     ; 表示のマッピング
+                         tab-mark
+                         ))
+
+(setq whitespace-display-mappings
+      '((tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
+
+(global-whitespace-mode 1)
+
+(setq c-basic-offset 2)
+(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
+
+(require 'smooth-scroll)
+(smooth-scroll-mode t)
+
+(require 'yascroll)
+(global-yascroll-bar-mode 1)
+(scroll-bar-mode nil)
