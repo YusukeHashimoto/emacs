@@ -18,8 +18,6 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
-
-
 (require 'install-elisp)
 (setq install-elisp-repository-directory "~/.emacs.d/elisp")
 
@@ -45,20 +43,6 @@
 
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
-(require 'whitespace)
-(setq whitespace-style '(face           ; faceで可視化
-                         trailing       ; 行末
-                         tabs           ; タブ
-;;                         empty          ; 先頭/末尾の空行
-                         space-mark     ; 表示のマッピング
-                         tab-mark
-                         ))
-
-(setq whitespace-display-mappings
-      '((tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
-
-(global-whitespace-mode 1)
-
 (setq c-basic-offset 2)
 (setq indent-tabs-mode nil)
 (setq-default indent-tabs-mode nil)
@@ -66,6 +50,6 @@
 (require 'smooth-scroll)
 (smooth-scroll-mode t)
 
-(require 'yascroll)
-(global-yascroll-bar-mode 1)
-(scroll-bar-mode nil)
+;(require 'yascroll)
+;(global-yascroll-bar-mode 1)
+;(scroll-bar-mode nil)
