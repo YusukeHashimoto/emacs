@@ -28,8 +28,8 @@
 
 (require 'anything-startup)
 
-(require 'helm-config)
-(helm-mode 1)
+;(require 'helm-config)
+;(helm-mode 1)
 
 (require 'git-gutter)
 (global-git-gutter-mode +1)
@@ -53,3 +53,35 @@
 ;(require 'yascroll)
 ;(global-yascroll-bar-mode 1)
 ;(scroll-bar-mode nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(column-number-mode t)
+ '(custom-enabled-themes (quote (wombat)))
+ '(display-battery-mode t)
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(defun all-indent ()
+  (interactive)
+  (save-excursion
+    (indent-region (point-min) (point-max))))
+
+(defun electric-indent ()
+  "Indent specified region.
+When resion is active, indent region.
+Otherwise indent whole buffer."
+  (interactive)
+  (if (use-region-p)
+      (indent-region (region-beginning) (region-end))
+    (all-indent)))
+
+(global-set-key (kbd "C-M-\\") 'electric-indent)
