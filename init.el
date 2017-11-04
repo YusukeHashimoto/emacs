@@ -85,3 +85,6 @@ Otherwise indent whole buffer."
     (all-indent)))
 
 (global-set-key (kbd "C-M-\\") 'electric-indent)
+
+(when (eq system-type 'darwin)
+  (setq ns-command-modifier (quote meta)))
